@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wispr Flow — Motion Graphics Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --off-white: #F5F2EE;
+    --white: #FFFFFF;
+    --charcoal: #1A1A1A;
+    --warm-grey: #E8E4DF;
+    --orange: #E8510A;
+    --orange-light: #FF6B1A;
+    --mid-grey: #9A9490;
+    --border: rgba(26,26,26,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--off-white);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--charcoal);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 52px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 16px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.45);
+    text-decoration: none; letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 0; }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+  .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--charcoal);
+    min-height: 100vh;
+    display: flex; align-items: flex-end;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 28vw; line-height: 0.85;
+    color: rgba(255,255,255,0.03);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(64px, 8vw, 120px);
+    line-height: 0.9; letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-title .accent { color: var(--orange); }
+  .hero-title .dim { color: rgba(255,255,255,0.3); }
+  .hero-meta {
+    display: flex; gap: 0; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+    margin-top: 16px;
+  }
+  .hero-meta-item {
+    padding: 16px 40px 16px 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    margin-right: 40px;
+  }
+  .hero-meta-item:last-child { border-right: none; }
+  .hero-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 5px;
+  }
+  .hero-meta-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 18px; color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 40px;
+    height: 1px; background: var(--orange); opacity: 0.4;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95; letter-spacing: -0.01em;
+    color: var(--charcoal); margin-bottom: 48px;
+  }
+  .section-title.light { color: var(--white); }
+
+  /* ── PURPOSE SECTION ── */
+  .purpose-section { background: var(--off-white); }
+  .purpose-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; margin-top: 8px;
+  }
+  .purpose-card {
+    background: var(--white);
+    padding: 40px;
+    position: relative;
+  }
+  .purpose-card:first-child {
+    grid-column: 1 / -1;
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 56px 48px;
+  }
+  .purpose-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--orange); letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
+  .purpose-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 28px; margin-bottom: 12px;
+    letter-spacing: 0.01em; line-height: 1.1;
+  }
+  .purpose-card p {
+    font-size: 15px; line-height: 1.65;
+    color: rgba(26,26,26,0.6);
+    font-weight: 300;
+  }
+  .purpose-card:first-child p { color: rgba(255,255,255,0.5); }
+  .purpose-card:first-child h3 { color: var(--white); font-size: 36px; }
+  .purpose-highlight {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(28px, 3vw, 40px);
+    color: var(--orange); display: block; margin-top: 20px;
+    line-height: 1.1;
+  }
+
+  /* ── COLORS ── */
+  .colors-section { background: var(--charcoal); }
+  .colors-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .color-swatch {
+    aspect-ratio: 1;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    position: relative;
+    cursor: default;
+    transition: transform 0.2s;
+  }
+  .color-swatch:hover { transform: scale(1.02); z-index: 2; }
+  .color-swatch.primary { aspect-ratio: auto; min-height: 280px; }
+  .swatch-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 18px;
+    margin-bottom: 4px; letter-spacing: 0.02em;
+  }
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.08em;
+    opacity: 0.6;
+  }
+  .swatch-role {
+    font-size: 12px; margin-top: 6px; font-weight: 300;
+    opacity: 0.55; line-height: 1.4;
+  }
+  .color-rule {
+    grid-column: 1 / -1;
+    background: rgba(255,255,255,0.04);
+    padding: 24px 32px;
+    display: flex; align-items: center; gap: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: 2px;
+  }
+  .color-rule-icon {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--orange); flex-shrink: 0;
+  }
+  .color-rule-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+  .color-rule-text strong { color: var(--white); }
+
+  /* ── TYPOGRAPHY ── */
+  .type-section { background: var(--off-white); }
+  .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .type-card {
+    background: var(--white); padding: 48px 40px;
+    overflow: hidden; position: relative;
+  }
+  .type-card.dark { background: var(--charcoal); }
+  .type-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 20px;
+  }
+  .type-specimen {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 72px; line-height: 0.9;
+    letter-spacing: -0.01em; color: var(--charcoal);
+    margin-bottom: 24px; overflow: hidden;
+  }
+  .type-specimen.light { color: var(--white); }
+  .type-specimen .orange { color: var(--orange); }
+  .type-details {
+    display: flex; flex-direction: column; gap: 8px;
+    border-top: 1px solid rgba(26,26,26,0.08);
+    padding-top: 20px;
+  }
+  .type-card.dark .type-details { border-color: rgba(255,255,255,0.08); }
+  .type-detail-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .type-detail-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--mid-grey); letter-spacing: 0.08em;
+  }
+  .type-detail-val {
+    font-size: 13px; font-weight: 500; color: var(--charcoal);
+  }
+  .type-card.dark .type-detail-val { color: rgba(255,255,255,0.7); }
+  .type-card-full {
+    background: var(--warm-grey); padding: 48px;
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 48px;
+  }
+  .type-rule-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--charcoal); color: var(--white);
+    padding: 8px 16px; font-size: 13px; font-weight: 500;
+    border-radius: 2px; white-space: nowrap;
+  }
+  .type-rule-pill.warning { background: var(--orange); }
+
+  /* ── VISUAL STYLE ── */
+  .visual-section { background: var(--charcoal); padding: 96px 0; }
+  .visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .visual-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 36px 32px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .visual-card:hover { background: rgba(255,255,255,0.06); }
+  .visual-card-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 80px; line-height: 1;
+    color: rgba(255,255,255,0.04); position: absolute;
+    top: 16px; right: 24px; pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+  .visual-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 22px;
+    color: var(--white); margin-bottom: 12px;
+    letter-spacing: 0.02em; line-height: 1.1;
+  }
+  .visual-card p {
+    font-size: 14px; font-weight: 300; line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+  }
+  .visual-card .accent-word { color: var(--orange); font-style: italic; }
+
+  /* ── MOTION ── */
+  .motion-section { background: var(--off-white); }
+  .motion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .motion-rule { padding: 32px 0; border-top: 2px solid var(--charcoal); }
+  .motion-rule h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 24px; margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .motion-rule p { font-size: 14px; color: rgba(26,26,26,0.55); font-weight: 300; line-height: 1.65; }
+  .motion-spec {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; background: var(--charcoal); color: var(--white);
+    padding: 3px 10px; border-radius: 2px; margin-top: 10px;
+    letter-spacing: 0.06em;
+  }
+  .motion-spec.orange { background: var(--orange); color: var(--white); }
+
+  /* ── SOUND ── */
+  .sound-section { background: var(--charcoal); }
+  .sound-rows { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+  .sound-row {
+    display: flex; align-items: stretch; gap: 0;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden;
+  }
+  .sound-icon {
+    width: 64px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.04);
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+  .sound-icon svg { width: 20px; height: 20px; opacity: 0.6; }
+  .sound-body { padding: 20px 28px; flex: 1; }
+  .sound-body h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px; color: var(--white);
+    margin-bottom: 5px; letter-spacing: 0.03em;
+  }
+  .sound-body p { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.55; }
+  .sound-tag {
+    padding: 20px 24px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.12em;
+    text-transform: uppercase; text-align: right;
+  }
+
+  /* ── DO / DON'T ── */
+  .rules-section { background: var(--off-white); }
+  .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .rules-col { background: var(--white); padding: 48px 40px; }
+  .rules-col.dont { background: var(--charcoal); }
+  .rules-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 40px; margin-bottom: 32px;
+    letter-spacing: -0.01em;
+  }
+  .rules-col .rules-col-title { color: var(--charcoal); }
+  .rules-col.dont .rules-col-title { color: var(--white); }
+  .rule-item {
+    display: flex; gap: 14px; margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .rule-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    margin-top: 8px; flex-shrink: 0;
+  }
+  .do .rule-dot { background: #22C55E; }
+  .dont .rule-dot { background: #EF4444; }
+  .rule-text {
+    font-size: 14px; font-weight: 400; line-height: 1.6;
+    color: rgba(26,26,26,0.65);
+  }
+  .rules-col.dont .rule-text { color: rgba(255,255,255,0.45); }
+
+  /* ── GUT CHECK ── */
+  .gut-section {
+    background: var(--orange);
+    padding: 120px 0;
+    position: relative; overflow: hidden;
+  }
+  .gut-bg {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 22vw; color: rgba(0,0,0,0.08);
+    white-space: nowrap; pointer-events: none; user-select: none;
+    letter-spacing: -0.02em;
+  }
+  .gut-wrong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15; color: rgba(0,0,0,0.35);
+    margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .gut-wrong::before {
+    content: '✕ ';
+    font-size: 0.7em; opacity: 0.6;
+  }
+  .gut-right {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(36px, 4.5vw, 60px);
+    line-height: 1.1; color: var(--charcoal);
+    margin-bottom: 4px; letter-spacing: -0.01em;
+  }
+  .gut-right::before {
+    content: '✓ ';
+    font-size: 0.7em; opacity: 0.8;
+  }
+  .gut-divider {
+    width: 64px; height: 3px; background: rgba(0,0,0,0.2);
+    margin: 40px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    padding: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 20px; color: var(--white);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .footer-brand span { color: var(--orange); }
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.2);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; animation: fadeUp 0.7s ease forwards;
+  }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.25s; }
+  .d3 { animation-delay: 0.4s; }
+  .d4 { animation-delay: 0.55s; }
+  .d5 { animation-delay: 0.7s; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--charcoal); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .container, .container-wide { padding: 0 24px; }
+    section { padding: 64px 0; }
+    .purpose-grid, .colors-grid, .type-grid, .visual-grid,
+    .motion-grid, .rules-grid { grid-template-columns: 1fr; }
+    .purpose-card:first-child { grid-column: 1; }
+    .type-card-full { flex-direction: column; gap: 16px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Wispr <span>Flow</span></div>
+  <ul class="nav-links">
+    <li><a href="#purpose">Purpose</a></li>
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Type</a></li>
+    <li><a href="#style">Style</a></li>
+    <li><a href="#motion">Motion</a></li>
+    <li><a href="#sound">Sound</a></li>
+    <li><a href="#rules">Rules</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:52px;">
+  <div class="hero-bg-text">FLOW</div>
+  <div class="container">
+    <div class="hero-tag reveal d1">Motion Graphics — Brand Guidelines</div>
+    <h1 class="hero-title reveal d2">
+      STOP<br>
+      THE<br>
+      <span class="accent">SCROLL.</span>
+    </h1>
+    <div class="hero-meta reveal d3">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Format</div>
+        <div class="hero-meta-value">9×16 Vertical</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Duration</div>
+        <div class="hero-meta-value">30–40 Seconds</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Platform</div>
+        <div class="hero-meta-value">Instagram Reels</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Spec</div>
+        <div class="hero-meta-value">1080×1920 · H.264</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Medium</div>
+        <div class="hero-meta-value">Pure Motion Graphics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PURPOSE -->
+<section class="purpose-section" id="purpose">
+  <div class="container">
+    <div class="section-label">01 — Purpose</div>
+    <h2 class="section-title">What these<br>videos are for.</h2>
+    <div class="purpose-grid">
+      <div class="purpose-card">
+        <div class="purpose-card-num">MISSION</div>
+        <h3>Top-of-funnel awareness reels for Instagram.</h3>
+        <p>Each video takes a single insight, stat, or concept and brings it to life through kinetic text and sound. No fluff, no filler, no brand theater.</p>
+        <span class="purpose-highlight">ONE SHARP IDEA. NOTHING ELSE.</span>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-card-num">01 — OBJECTIVE</div>
+        <h3>Stop the scroll</h3>
+        <p>You have less than two seconds before someone swipes past. Every frame has to earn the next one. There is no room for a slow build.</p>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-card-num">02 — TONE</div>
+        <h3>Never feel like an ad</h3>
+        <p>This is a sharp person talking directly at you through moving type. Not a brand announcement. Not a thought-leader carousel. Something real.</p>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-card-num">03 — OUTCOME</div>
+        <h3>Wispr Flow feels inevitable</h3>
+        <p>By the end, the viewer should feel like Wispr Flow is the obvious next step — not because they were sold to, but because the idea landed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="colors-section" id="colors">
+  <div class="container">
+    <div class="section-label" style="color:var(--orange);">02 — Color Palette</div>
+    <h2 class="section-title light">Two or three.<br>Never more.</h2>
+    <div class="colors-grid">
+      <div class="color-swatch primary" style="background:#F5F2EE; color:#1A1A1A;">
+        <div class="swatch-name">Off-White</div>
+        <div class="swatch-hex">#F5F2EE · #FFFFFF</div>
+        <div class="swatch-role" style="color:rgba(26,26,26,0.5);">Primary background. The resting state. Most frames live here.</div>
+      </div>
+      <div class="color-swatch" style="background:#1A1A1A; color:#F5F2EE;">
+        <div class="swatch-name">Deep Charcoal</div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-role">Dark sections, all text, impact moments. The default for emphasis.</div>
+      </div>
+      <div class="color-swatch" style="background:#E8E4DF; color:#1A1A1A;">
+        <div class="swatch-name">Warm Grey</div>
+        <div class="swatch-hex">#E8E4DF</div>
+        <div class="swatch-role" style="color:rgba(26,26,26,0.5);">Cards, secondary backgrounds. Between off-white and full dark.</div>
+      </div>
+      <div class="color-swatch" style="background:#E8510A; color:#FFFFFF;">
+        <div class="swatch-name" style="font-size:22px;">Orange</div>
+        <div class="swatch-hex">#E8510A</div>
+        <div class="swatch-role">THE accent. One word. One callout. Use it once, max twice. Lose the power if overused.</div>
+      </div>
+      <div class="color-rule">
+        <div class="color-rule-icon"></div>
+        <div class="color-rule-text"><strong>Rule:</strong> 2–3 colors per video. One dominant background · one text color · the orange hits <strong>once</strong>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="type-section" id="typography">
+  <div class="container">
+    <div class="section-label">03 — Typography</div>
+    <h2 class="section-title">Type is the<br>entire visual.</h2>
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-card-label">Spoken / Caption Text</div>
+        <div class="type-specimen" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:-0.01em;">
+          STOP<br><span class="orange">LISTEN</span><br>ING.
+        </div>
+        <div class="type-details">
+          <div class="type-detail-row">
+            <span class="type-detail-key">typeface</span>
+            <span class="type-detail-val">Arial Bold Condensed</span>
+          </div>
+          <div class="type-detail-row">
+            <span class="type-detail-key">purpose</span>
+            <span class="type-detail-val">Mirrors voiceover word for word</span>
+          </div>
+          <div class="type-detail-row">
+            <span class="type-detail-key">weight</span>
+            <span class="type-detail-val">Bold / Extra Bold</span>
+          </div>
+          <div class="type-detail-row">
+            <span class="type-detail-key">case</span>
+            <span class="type-detail-val">ALL CAPS — always</span>
+          </div>
+        </div>
+      </div>
+      <div class="type-card dark">
+        <div class="type-card-label">Asset / Title Text</div>
+        <div class="type-specimen light" style="font-family:'DM Mono',monospace; font-size:52px; font-weight:500; color:rgba(255,255,255,0.9); letter-spacing:0.02em; line-height:1.1;">
+          ~/wispr<br><span style="color:var(--orange);">_flow</span><br>v2.0
+        </div>
+        <div class="type-details">
+          <div class="type-detail-row">
+            <span class="type-detail-key">typeface</span>
+            <span class="type-detail-val" style="color:rgba(255,255,255,0.7);">Contextual — best fit</span>
+          </div>
+          <div class="type-detail-row">
+            <span class="type-detail-key">tech content</span>
+            <span class="type-detail-val" style="color:rgba(255,255,255,0.7);">Terminal / pixel</span>
+          </div>
+          <div class="type-detail-row">
+            <span class="type-detail-key">editorial</span>
+            <span class="type-detail-val" style="color:rgba(255,255,255,0.7);">Bold serif or slab</span>
+          </div>
+        </div>
+      </div>
+      <div class="type-card-full">
+        <div style="flex:1;">
+          <div class="type-card-label">The Hard Limit</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:48px; line-height:1; letter-spacing:-0.01em; color:var(--charcoal); margin-bottom:16px;">
+            MAX 3 FONTS.
+          </div>
+          <p style="font-size:14px; color:rgba(26,26,26,0.5); font-weight:300; line-height:1.65; max-width:400px;">
+            One for captions. One for titles. One optional accent. Any more is noise. The type is doing all the work — don't dilute it.
+          </p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div class="type-rule-pill">✓ Caption font</div>
+          <div class="type-rule-pill">✓ Title font</div>
+          <div class="type-rule-pill" style="opacity:0.5;">✓ Accent (optional)</div>
+          <div class="type-rule-pill warning">✕ 4th font = no</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL STYLE -->
+<section class="visual-section" id="style">
+  <div class="container">
+    <div class="section-label">04 — Visual Style</div>
+    <h2 class="section-title light">How the<br>frame works.</h2>
+    <div class="visual-grid">
+      <div class="visual-card">
+        <div class="visual-card-num">01</div>
+        <h4>Kinetic Typography</h4>
+        <p>Text animates in with <span class="accent-word">purpose</span> — slams, cuts, snaps. Nothing sits still too long. Every entrance is a decision.</p>
+      </div>
+      <div class="visual-card">
+        <div class="visual-card-num">02</div>
+        <h4>Big, Bold Type</h4>
+        <p>Key words get size, weight, or <span class="accent-word">color emphasis</span>. Not everything is the same size. The hierarchy is the design.</p>
+      </div>
+      <div class="visual-card">
+        <div class="visual-card-num">03</div>
+        <h4>Negative Space</h4>
+        <p>A single word centered on a dark background hits harder than a packed frame. <span class="accent-word">Empty is power.</span></p>
+      </div>
+      <div class="visual-card">
+        <div class="visual-card-num">04</div>
+        <h4>Numbers Own Moments</h4>
+        <p>Stats and numbers get their own frame. Big, centered, animated in with impact. Never buried in a sentence.</p>
+      </div>
+      <div class="visual-card">
+        <div class="visual-card-num">05</div>
+        <h4>No Decoration</h4>
+        <p>No gradients, no sticker emojis, no illustrated icons. <span class="accent-word">Pure type on clean backgrounds.</span> Decoration is a crutch.</p>
+      </div>
+      <div class="visual-card">
+        <div class="visual-card-num">06</div>
+        <h4>One Idea Per Frame</h4>
+        <p>Each scene carries exactly one thought. When the idea lands, cut. Never wait for comfort — cut when it's done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section class="motion-section" id="motion">
+  <div class="container">
+    <div class="section-label">05 — Motion Principles</div>
+    <h2 class="section-title">Animation<br>has rules.</h2>
+    <div class="motion-grid">
+      <div class="motion-rule">
+        <h4>Sync to the voice</h4>
+        <p>Animation reacts to words — when the voiceover pauses, something lands visually. The text is transcription, not decoration.</p>
+        <span class="motion-spec">trigger on word</span>
+      </div>
+      <div class="motion-rule">
+        <h4>Entrances over exits</h4>
+        <p>Spend all your energy on how things come in. Exits can be fast cuts. Nobody remembers things leaving — they remember things arriving.</p>
+        <span class="motion-spec">exits = instant cut</span>
+      </div>
+      <div class="motion-rule">
+        <h4>Half-second ceiling</h4>
+        <p>No single animation runs longer than 500ms. If it takes longer, it's too slow. Attention is expensive and you're spending it.</p>
+        <span class="motion-spec orange">max 500ms</span>
+      </div>
+      <div class="motion-rule">
+        <h4>Slams, not slides</h4>
+        <p>Use snap entrances: scale from 0.8→1, or translateY from +20px to 0, with ease-out. Never a gentle float. It should feel decisive.</p>
+        <span class="motion-spec">ease-out · snap</span>
+      </div>
+      <div class="motion-rule">
+        <h4>Pauses land the punch</h4>
+        <p>When the voiceover pauses, hold the frame. That silence is the moment the idea actually lands. Don't animate through it.</p>
+        <span class="motion-spec">hold on pause</span>
+      </div>
+      <div class="motion-rule">
+        <h4>Orange moves last</h4>
+        <p>The orange accent should enter after the main copy. It's the emphasis, not the lead. One orange word per beat maximum.</p>
+        <span class="motion-spec orange">accent · delay 0.2s</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOUND -->
+<section class="sound-section" id="sound">
+  <div class="container">
+    <div class="section-label">06 — Sound Design</div>
+    <h2 class="section-title light">Sound isn't<br>optional.</h2>
+    <div class="sound-rows">
+      <div class="sound-row">
+        <div class="sound-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <div class="sound-body">
+          <h4>Text entrance = sound</h4>
+          <p>Every text entrance gets a sound — subtle whooshes, clicks, impacts. Never silent. The sound confirms the visual. Short, clean, intentional.</p>
+        </div>
+        <div class="sound-tag">Per word</div>
+      </div>
+      <div class="sound-row">
+        <div class="sound-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/>
+          </svg>
+        </div>
+        <div class="sound-body">
+          <h4>Music bed: atmosphere only</h4>
+          <p>Low, instrumental, no lyrics. No busy beats. The music is the room the words live in — not the point. If you notice it, it's too loud.</p>
+        </div>
+        <div class="sound-tag">Background</div>
+      </div>
+      <div class="sound-row" style="border: 1px solid rgba(232,81,10,0.3); background: rgba(232,81,10,0.05);">
+        <div class="sound-icon" style="background:rgba(232,81,10,0.1); border-color:rgba(232,81,10,0.2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8510A" stroke-width="1.5" stroke-linecap="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="sound-body">
+          <h4>The last line hits differently</h4>
+          <p>A drop, a single hard impact, or sudden silence. Pick one and commit. This is the moment that determines whether the video is remembered. Don't hedge it.</p>
+        </div>
+        <div class="sound-tag" style="color:rgba(232,81,10,0.6);">Ending</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DON'T -->
+<section class="rules-section" id="rules">
+  <div class="container">
+    <div class="section-label">07 — Do &amp; Don't</div>
+    <h2 class="section-title">Hard rules.<br>No exceptions.</h2>
+    <div class="rules-grid">
+      <div class="rules-col do">
+        <div class="rules-col-title">✓ Do</div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Pure motion graphics — kinetic type, clean frames, intentional animation</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">One dominant background color, one text color, one orange accent hit per video</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Arial Bold Condensed for all caption/spoken text — mirrors the voiceover exactly</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Numbers get their own full frame — big, centered, animated in with impact</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">End with energy — a drop, an impact, or deliberate silence. Commit to it.</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Animate entrances. Cut exits. All budget goes to arrivals.</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Sync every animation to the voiceover beat — word triggers animation</div></div>
+      </div>
+      <div class="rules-col dont">
+        <div class="rules-col-title" style="color:#EF4444;">✕ Don't</div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">B-roll, stock footage, or talking head clips — this is not a hybrid video</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Slide transitions that feel like PowerPoint — no push, no wipe, no zoom-in-from-everywhere</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Gradients that look like a 2019 SaaS landing page — no purple-to-blue, no anything-to-anything</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Animated emoji or sticker-style graphics — ever</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">More than 3 fonts — max is max</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Ending on a static logo with no energy — the last frame must land, not coast</div></div>
+        <div class="rule-item"><div class="rule-dot"></div><div class="rule-text">Animation longer than 500ms — if it takes that long it's slow and soft</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUT CHECK -->
+<section class="gut-section" id="gutcheck">
+  <div class="gut-bg">GUT CHECK</div>
+  <div class="container" style="position:relative; z-index:2;">
+    <div class="section-label" style="color:rgba(0,0,0,0.5);">08 — The Final Test</div>
+    <div class="gut-wrong">If it feels like an ad or a thought leader slideshow, it's wrong.</div>
+    <div class="gut-divider"></div>
+    <div class="gut-right">If it feels like a sharp person talking directly at you through moving text, it's right.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Wispr <span>Flow</span> — Motion Graphics</div>
+  <div class="footer-note">Brand Guidelines v1.0 · Top-of-Funnel · Instagram Reels · 1080×1920</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
